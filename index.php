@@ -9,13 +9,14 @@
     <?php 
         $name = "Kawsar";
         
-        function sayHi() {
+        // function sayHi() {
+        //     echo  $GLOBALS['name'];
+        // }
 
-            
-            echo  $GLOBALS['name'];
-        }
+        // sayHi();
 
-        sayHi();
+        include('./function.php');
+        echo sayHi();
     
     ?>
 
