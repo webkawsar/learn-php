@@ -29,7 +29,24 @@
 
 
         // associative array sorting
+        $profile = array("name" => "Kawsar Ahmed", "profession" => "Developer", "job" => "Bekar");
 
+        // sorted by ascending
+        // asort($profile);
+
+        // sorted by descending
+        // arsort($profile);
+
+        // sorted key in ascending
+        // ksort($profile) ;
+
+        // sorted key in descending
+        krsort($profile);
+
+        foreach($profile as $key => $value) {
+
+            echo "$key = $value </br>";
+        }
 
     ?>
 </body>
