@@ -7,9 +7,9 @@
 </head>
 <body>
     <?php
-        $is_student = false;
+        $price = 101.15;
 
-        var_dump($is_student);
+        var_dump($price);
     ?>
 </body>
 </html>

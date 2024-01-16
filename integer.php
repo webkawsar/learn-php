@@ -7,9 +7,13 @@
 </head>
 <body>
     <?php
-        $is_student = false;
+        // integer must have one digit
+        // integer can be positive or negative
+        // integer can't decimal
 
-        var_dump($is_student);
+        $salary = 600;
+
+        var_dump($salary);
     ?>
 </body>
 </html>
