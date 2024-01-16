@@ -7,13 +7,14 @@
 </head>
 <body>
     <?php
-        $price = 101;
-        // var_dump($price);
+        $price = 101.50;
+
+        // echo (int)$price;
 
 
-        // is_double() alias is_float()
-        var_dump(is_float($price)); // return boolean(false) cause, 101 is integer
-        
+        $integer_number = (int)$price;
+        echo "Integer is $integer_number </br>";
+        var_dump($integer_number);
     ?>
 </body>
 </html>

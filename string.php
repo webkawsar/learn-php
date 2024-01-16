@@ -17,7 +17,7 @@
 
         // var_dump data type and value return kore
 
-
+        // string built in function
         // strlen function er maddome string er length pawa jay
         // echo strlen($name); 
 

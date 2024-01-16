@@ -13,7 +13,17 @@
 
         $salary = 600;
 
-        var_dump($salary);
+        // var_dump($salary); /
+
+
+        // integer built in function
+        // // is_integer() alias is_int()
+        // var_dump(is_int($salary)); // boolean(true)
+        
+
+        // is_long() alias is_int()
+        var_dump(is_long($salary)); // boolean(true)
+
     ?>
 </body>
 </html>
