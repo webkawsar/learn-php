@@ -68,6 +68,16 @@
             echo "profile $key = $value </br>";
         }
 
+
+
+        // multi dimensional array
+        $man = array("name" => "Sami", 
+                "address" => array(
+                    "dist" => 'Jhenaidah'
+                ));
+
+        echo $man['address']['dist'];
+
     ?>
 </body>
 </html>
