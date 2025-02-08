@@ -8,5 +8,6 @@
     $mot = $alo + $potol + $mass;
 
     echo "Total $mot takar bajar koriyasi";
+    
 
 ?>

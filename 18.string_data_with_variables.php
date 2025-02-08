@@ -12,6 +12,7 @@
     echo "<br />";
     echo 'My name is $name and I am $age years old';
     echo "<br />";
+    echo "My name is \"$name\" and I am $age years old";
     
 
 
