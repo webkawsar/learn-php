@@ -19,7 +19,7 @@
     }
 
 
-
+    // die use kora hole er nicher code ar execute hobe na
     echo "I Love BD <br />";
     echo "I Love BD <br />";
     die();
