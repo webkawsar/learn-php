@@ -8,6 +8,11 @@
         echo "<pre>";
         print_r($_GET);
         echo "</pre>";
+
+        $email = $_GET['email'];
+        $password = $_GET['password'];
+
+        echo "Email: $email and Password: $password";
     }
 
    
