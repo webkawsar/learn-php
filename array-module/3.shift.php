@@ -13,8 +13,8 @@ print_r($friends);
 echo "</pre>";
 echo "<br />";
 
-// array pop return removed last element of array and modify main array
-echo array_pop($friends);
+// array shift remove first element and return removed element. Modify main array
+echo array_shift($friends);
 
 echo "<pre>";
 print_r($friends);

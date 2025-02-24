@@ -13,7 +13,7 @@ print_r($friends);
 echo "</pre>";
 echo "<br />";
 
-// after push return count of array length
+// array push return count of array length and modify main array
 echo array_push($friends, "Mizan");
 
 echo "<pre>";
