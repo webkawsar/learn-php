@@ -17,8 +17,6 @@
     echo "<br />";
 
 
-
-    // index array sorting by descending and modify main array
     $numbers = array(1, 3, 5, 4, 11, 50, 25, 500, 2500, 100);
 
     echo "<pre>";
@@ -26,7 +24,7 @@
     echo "</pre>";
     echo "<br />";
     
-    // sort($numbers);
+    // index array sorting by descending and modify main array
     rsort($numbers);
 
     echo "<pre>";
