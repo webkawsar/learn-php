@@ -10,20 +10,19 @@
     }
 
 
-    // associative array iterate but cannot get key, just get value only
+    // associative array iterate 
     $profile = [
         "name" => "Kawsar Ahmed",
         "age" => 27,
         "profession" => "Developer"
     ];
 
-    foreach($profile as $key) {
+    echo count($profile);
+    echo "</br>";
 
-        echo "Key: $key";
-        echo "<br />";
+    foreach($profile as $key => $value) {
+        echo "profile $key = $value </br>";
     }
-
-
 
 
 
