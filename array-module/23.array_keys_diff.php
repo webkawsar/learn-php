@@ -1,6 +1,5 @@
 <?php
 
-
     // difference between two array by keys
     // compare based on first array
     $array1 = array("a" => 10, "b" => 20, "c" => 30, 'd' => 30, 'e' => 50);
