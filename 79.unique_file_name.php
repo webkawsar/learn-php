@@ -19,6 +19,11 @@
         $file_name = $file['name'];
         $tmp_name = $file['tmp_name'];
 
+        // generate unique file name
+        $rand_file_name = rand(1, 99999).time().$file_name;
+        $unique_file_name = md5($rand_file_name);
+        move_uploaded_file($tmp_name, "images/$unique_file_name");
+
     }
 
    
