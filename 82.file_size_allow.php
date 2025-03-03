@@ -14,7 +14,7 @@
         // get file info
         $file_name = $file['name'];
         $tmp_name = $file['tmp_name'];
-        $file_size = $file['size'] / 1024;
+        $file_size = ceil($file['size'] / 1024);
         echo $file_size;
         
 
