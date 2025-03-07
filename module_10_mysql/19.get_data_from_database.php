@@ -35,9 +35,9 @@
     // echo $object_data -> name;
 
 
-    // get all data 
+    // get all data by loop
     while($object_data = $data -> fetch_object()) {
-        echo $object_data -> name . '<br>';
+        echo $object_data -> username . "<br>";
     }
 
 
