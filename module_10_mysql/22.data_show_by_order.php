@@ -1,7 +1,6 @@
 <?php
 
-// get data from database and show data in html
-
+// config
 $host = 'localhost';
 $username = "root";
 $password = '';
@@ -10,21 +9,13 @@ $database = 'b129';
 // database connection
 $connection = new mysqli($host, $username, $password, $database);
 
-// 
-$sql = "SELECT * FROM users";
+// sql query
+$sql = "SELECT * FROM users ORDER BY username DESC";
 $data = $connection -> query($sql);
 
-// $user_data = $data -> fetch_assoc();
-
-// echo "<pre>";
-// print_r($user_data);
-// echo "</pre>";
-// echo "<br />";
-
+// gel all data by looping
 while($user_data = $data -> fetch_assoc()){
     echo $user_data['username'] . '<br>';
 }
-
-
 
 

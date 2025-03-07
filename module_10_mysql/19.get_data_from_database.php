@@ -7,6 +7,7 @@
 
     // delete all data from table
     // $sql = "DELETE FROM users";
+    // $sql = "SELECT username, email FROM users";
     $sql = "SELECT * FROM users";
 
     $data = $connection -> query($sql);
