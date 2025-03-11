@@ -15,7 +15,7 @@
 	<div class="wrap-table shadow">
 		<div class="card">
 			<div class="card-body">
-				<h2>All Data</h2>
+				<h2>All Students</h2>
 				<table class="table table-striped">
 					<thead>
 						<tr>
