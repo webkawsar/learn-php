@@ -1,3 +1,7 @@
+<?php
+	include_once "autoload.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +14,57 @@
 </head>
 <body>
 	
+	<?php
+
+		/**
+		* Submit user form
+		*/
+		if(isset($_POST['submit'])) {
+			$user_name = $_POST['user_name'];
+			$full_name = $_POST['full_name'];
+			$email = $_POST['email'];
+			$phone = $_POST['phone'];
+			$age = $_POST['age'];
+			$gender = $_POST['gender'];
+			$location = $_POST['location'];
+
+			// checking empty field validation
+			if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
+				$message = "<div class='alert alert-danger' role='alert'>All fields are required</div>";
+			} else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$message = "<div class='alert alert-danger' role='alert'>Invalid email</div>";
+			} else {
+
+				// save data to database
+				$sql = "INSERT INTO users(user_name, full_name, email, phone, age, gender, location) VALUES('$user_name', '$full_name', '$email', '$phone', '$age', '$gender', '$location')";
+				// connect_db()->query($sql);
+				echo connect_db() -> query($sql);
+
+			}
+		}
+
+
+	?>
+
+
+	
 
 	<div class="wrap-table">
-		<a class="btn btn-sm btn-primary" data-toggle="modal" href="#add_student_modal">Add new student</a>
+		<a class="btn btn-sm btn-primary" data-toggle="modal" href="#add_student_modal">Add new user</a>
 		<br>
 		<br>
+
+		<?php
+
+			if(isset($message)) {
+				echo $message;
+			}
+
+		?>
 
 		<div class="card shadow">
 			<div class="card-body">
-				<h2>All Students</h2>
+				<h2>All Users</h2>
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -99,19 +145,24 @@
 		</div>
 	</div>
 
-	<!-- Student Create Modal -->
+	<!-- user Create Modal -->
 	<div id="add_student_modal" class="modal fade">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3>Add new student</h3>
+					<h3>Add new user</h3>
 				</div>
+
 				<div class="modal-body">
 					<form action="" method="POST" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="user_name">Username</label>
+							<input name="user_name" class="form-control" type="text">
+						</div>
 
 						<div class="form-group">
-							<label for="">Student Name</label>
-							<input name="name" class="form-control" type="text">
+							<label for="full_name">Full name</label>
+							<input name="full_name" class="form-control" type="text">
 						</div>
 
 						<div class="form-group">
@@ -119,20 +170,27 @@
 							<input name="email" class="form-control" type="text">
 						</div>
 
-
 						<div class="form-group">
-							<label for="">Cell</label>
-							<input name="cell" class="form-control" type="text">
+							<label for="">Phone</label>
+							<input name="phone" class="form-control" type="text">
 						</div>
 
 						<div class="form-group">
-							<label for="">Username</label>
-							<input name="username" class="form-control" type="text">
+							<label for="age">Age</label>
+							<input name="age" class="form-control" type="text">
 						</div>
 
 						<div class="form-group">
-							<label for="">Location</label>
-							<select class="form-control" name="location" id="">
+							<label for="gender">Gender</label>
+							<select name="gender" id="gender" class="form-control">
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="location">Location</label>
+							<select class="form-control" name="location" id="location">
 								<option value="">-select-</option>
 								<option value="Mirpur">Mirpur</option>
 								<option value="Banani">Banani</option>
@@ -144,44 +202,17 @@
 						</div>
 
 						<div class="form-group">
-							<label for="">Age</label>
-							<input name="age" class="form-control" type="text">
-						</div>
-
-						<div class="form-group">
-							<label for="">Gender</label> <br>
-							<input name="gender" type="radio" checked value="Male" id="Male"> <label for="Male">Male</label>
-							<input name="gender" type="radio" value="Female" id="Female"> <label for="Female">Female</label>
-						</div>
-
-						<div class="form-group">
-							<label for="">Dept</label>
-							<select class="form-control" name="dept" id="">
-								<option value="">-select-</option>
-								<option value="BBA">BBA</option>
-								<option value="EEE">EEE</option>
-								<option value="CSE">CSE</option>
-								<option value="English">English</option>
-								<option value="Bangla">Bangla</option>
-								<option value="IT">IT</option>
-							</select>
-						</div>
-
-						<div class="form-group">
 							<label for="">Profile Photo</label> <br>
 							<img id="load_student_photo" style="max-width:100%;width:200px;" src="Profile Picture" alt="">
 							<br>
-							<label for="student_photo"> <img width="100" src="assets/media/img/up.png" alt=""></label>
+
+							<label for="student_photo"> <img width="70" src="assets/media/img/up.png" alt=""></label>
 							<input id="student_photo" name="photo" style="display:none;" class="form-control" type="file">
 						</div>
 						
 						<div class="form-group">
-							<label for=""></label>
-							<input name="stc" class="btn btn-primary" type="submit" value="add student">
+							<input name="submit" class="btn btn-primary" type="submit" value="Submit">
 						</div>
-
-
-
 					</form>
 				</div>
 				<div class="modal-footer"></div>
