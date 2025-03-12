@@ -1,9 +1,0 @@
-- name
-- email
-- cell 
-- username 
-- location 
-- age 
-- Gender 
-- Photo 
-- dept 

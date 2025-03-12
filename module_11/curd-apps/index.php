@@ -10,61 +10,91 @@
 </head>
 <body>
 	
-	<?php
-		$connection = new mysqli("localhost", "root", "", "php_crud");
 
-		// create table
-		// $sql = "CREATE TABLE users(
-		// 	id int(11) AUTO_INCREMENT,
-		// 	user_name varchar(100),
-		// 	full_name varchar(100),
-		// 	email varchar(50),
-		// 	phone varchar(20),
-		// 	age int(3),
-		// 	gender varchar(10),
-		// 	photo varchar(255),
-		// 	location varchar(100),
-		// 	PRIMARY KEY(id)
-		// )";
-
-
-		// data insert
-		$sql = "";
-		// $connection -> query($sql);
-
-
-	?>
-
-	<div class="wrap shadow">
+	<div class="wrap-table">
 		<a class="btn btn-sm btn-primary" data-toggle="modal" href="#add_student_modal">Add new student</a>
 		<br>
 		<br>
 
-
-		<div class="card">
+		<div class="card shadow">
 			<div class="card-body">
-				<h2>Sign Up</h2>
-				<form action="">
-					<div class="form-group">
-						<label for="">Name</label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="form-group">
-						<label for="">Email</label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="form-group">
-						<label for="">Cell</label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="form-group">
-						<label for="">Username</label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Sign Up">
-					</div>
-				</form>
+				<h2>All Students</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Cell</th>
+							<th>Photo</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Asraful Haque</td>
+							<td>haq@gmail.com</td>
+							<td>01717700811</td>
+							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Asraful Haque</td>
+							<td>haq@gmail.com</td>
+							<td>01717700811</td>
+							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Asraful Haque</td>
+							<td>haq@gmail.com</td>
+							<td>01717700811</td>
+							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Asraful Haque</td>
+							<td>haq@gmail.com</td>
+							<td>01717700811</td>
+							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Asraful Haque</td>
+							<td>haq@gmail.com</td>
+							<td>01717700811</td>
+							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
