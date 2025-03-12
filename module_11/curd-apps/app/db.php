@@ -15,18 +15,21 @@
     
 
     // create table
-    // $sql = "CREATE TABLE users(
-    // 	id int(11) AUTO_INCREMENT,
-    // 	user_name varchar(100),
-    // 	full_name varchar(100),
-    // 	email varchar(50),
-    // 	phone varchar(20),
-    // 	age int(3),
-    // 	gender varchar(10),
-    // 	photo varchar(255),
-    // 	location varchar(100),
-    // 	PRIMARY KEY(id)
-    // )";
+    $sql = "CREATE TABLE users(
+    	id int(11) AUTO_INCREMENT,
+    	user_name varchar(100),
+    	full_name varchar(100),
+    	email varchar(100),
+    	phone varchar(20),
+    	age int(3),
+    	gender varchar(10),
+    	photo varchar(100),
+    	location varchar(100),
+        status varchar(20) DEFAULT 'active',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    	PRIMARY KEY(id)
+    )";
 
 
     // data insert sql
