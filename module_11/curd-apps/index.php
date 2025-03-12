@@ -28,6 +28,16 @@
 			$gender = $_POST['gender'];
 			$location = $_POST['location'];
 
+			// file handling
+			$file_name = $_FILES['photo']['name'];
+			$file_tamp_name = $_FILES['photo']['tmp_name'];
+			$file_arr = explode('.', $file_name);
+			$file_extension = end($file_arr);
+			
+			// Generate unique file name
+			$date_time = date('Y-m-d_H-i-s');
+			$unique_file_name = "{$user_name}-{$date_time}-{$file_name}";
+
 			// checking empty field validation
 			if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
 				$message = "<div class='alert alert-danger' role='alert'>All fields are required</div>";
@@ -36,10 +46,14 @@
 			} else {
 
 				// save data to database
-				$sql = "INSERT INTO users(user_name, full_name, email, phone, age, gender, location) VALUES('$user_name', '$full_name', '$email', '$phone', '$age', '$gender', '$location')";
-				// connect_db()->query($sql);
-				echo connect_db() -> query($sql);
+				$sql = "INSERT INTO users(user_name, full_name, email, phone, age, gender, photo, location) VALUES('$user_name', '$full_name', '$email', '$phone', '$age', '$gender', '$unique_file_name', '$location')";
+				connect_db() -> query($sql);
 
+				// file upload
+				move_uploaded_file($file_tamp_name, "public/profiles/" . $unique_file_name);
+
+				// show a success message
+				$message = "<div class='alert alert-success' role='alert'>User added successfully!</div>";
 			}
 		}
 
