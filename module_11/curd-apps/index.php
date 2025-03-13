@@ -46,8 +46,16 @@
 			} else {
 
 				// save data to database
-				$sql = "INSERT INTO users(user_name, full_name, email, phone, age, gender, photo, location) VALUES('$user_name', '$full_name', '$email', '$phone', '$age', '$gender', '$unique_file_name', '$location')";
-				connect_db() -> query($sql);
+				create('users', [
+					'user_name' => $user_name,
+					'full_name' => $full_name,
+					'email' => $email,
+					'phone' => $phone,
+					'age' => $age,
+					'gender' => $gender,
+					'photo' => $unique_file_name,
+					"location" => $location
+				]);
 
 				// file upload
 				move_uploaded_file($file_tamp_name, "public/profiles/" . $unique_file_name);
