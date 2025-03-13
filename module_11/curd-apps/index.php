@@ -40,9 +40,9 @@
 
 			// checking empty field validation
 			if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
-				$message = "<div class='alert alert-danger' role='alert'>All fields are required</div>";
+				$message = show_message("danger", "All fields are required!");
 			} else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				$message = "<div class='alert alert-danger' role='alert'>Invalid email</div>";
+				$message = show_message("danger", "Invalid email!");
 			} else {
 
 				// save data to database
@@ -53,7 +53,7 @@
 				move_uploaded_file($file_tamp_name, "public/profiles/" . $unique_file_name);
 
 				// show a success message
-				$message = "<div class='alert alert-success' role='alert'>User added successfully!</div>";
+				$message = show_message("success", "User added successfully");
 			}
 		}
 
