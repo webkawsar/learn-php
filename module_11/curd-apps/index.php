@@ -83,76 +83,49 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Name</th>
+							<th>Username</th>
+							<th>Full name</th>
 							<th>Email</th>
-							<th>Cell</th>
+							<th>Phone</th>
+							<th>Age</th>
+							<th>Gender</th>
 							<th>Photo</th>
+							<th>Location</th>
+							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Asraful Haque</td>
-							<td>haq@gmail.com</td>
-							<td>01717700811</td>
-							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
-							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
-							</td>
-						</tr>
-						
 
+						<?php
+
+							$sql = "SELECT * FROM users ORDER BY id DESC";
+							$users = connect_db() -> query($sql);
+							$id = 1;
+							while($user = $users -> fetch_assoc()):
+						?>
+						<tr>
+							<td><?php echo $id; $id++; ?></td>
+							<td><?php echo $user['user_name']; ?></td>
+							<td><?php echo $user['full_name']; ?></td>
+							<td><?php echo $user['email']; ?></td>
+							<td><?php echo $user['phone']; ?></td>
+							<td><?php echo $user['age']; ?></td>
+							<td><?php echo $user['gender']; ?></td>
+							<!-- <td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td> -->
+							<td><img src="public/profiles/<?php echo $user['photo'] ?>" alt=""></td>
+							<td><?php echo $user['location']; ?></td>
+							<td><?php echo $user['status']; ?></td>
+							<td>
+								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+							</td>
+						</tr>
+						<?php
+							endwhile;
+						?>
+						
 					</tbody>
 				</table>
 			</div>
