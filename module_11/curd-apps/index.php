@@ -98,9 +98,7 @@
 					<tbody>
 
 						<?php
-
-							$sql = "SELECT * FROM users ORDER BY id DESC";
-							$users = connect_db() -> query($sql);
+							$users = get_all('users');
 							$id = 1;
 							while($user = $users -> fetch_assoc()):
 						?>
@@ -112,7 +110,6 @@
 							<td><?php echo $user['phone']; ?></td>
 							<td><?php echo $user['age']; ?></td>
 							<td><?php echo $user['gender']; ?></td>
-							<!-- <td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td> -->
 							<td><img src="public/profiles/<?php echo $user['photo'] ?>" alt=""></td>
 							<td><?php echo $user['location']; ?></td>
 							<td><?php echo $user['status']; ?></td>

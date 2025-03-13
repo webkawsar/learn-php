@@ -9,5 +9,12 @@
     }
 
 
+    /**
+     * get all data
+    */
 
+    function get_all($table, $order = 'DESC') {
+        $sql = "SELECT * FROM $table ORDER BY id $order";
+        return $users = connect_db() -> query($sql);
+    }
 
