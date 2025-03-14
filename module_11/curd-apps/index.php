@@ -3,10 +3,16 @@
 
 	if(isset($_GET['delete_id'])) {
 
-		// delete user
-		delete_by_id("users", $_GET['delete_id']);
+		$id = $_GET['delete_id'];
+		$photo = $_GET['photo'];
 
-		// clear deleted id
+		// remove photo
+		unlink('public/profiles/'.$photo);
+
+		// delete user
+		delete_by_id("users", $id);
+
+		// clear url
 		header("location:index.php");
 	}
 ?>
@@ -134,7 +140,7 @@
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $user['id']; ?>">Delete</a>
+								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $user['id']; ?>&photo=<?php echo $user['photo']; ?>">Delete</a>
 							</td>
 						</tr>
 						<?php
