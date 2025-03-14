@@ -28,22 +28,15 @@
 			$gender = $_POST['gender'];
 			$location = $_POST['location'];
 
-			// file handling
-			$file_name = $_FILES['photo']['name'];
-			$file_tamp_name = $_FILES['photo']['tmp_name'];
-			$file_arr = explode('.', $file_name);
-			$file_extension = end($file_arr);
-			
-			// Generate unique file name
-			$date_time = date('Y-m-d_H-i-s');
-			$unique_file_name = "{$user_name}-{$date_time}-{$file_name}";
-
 			// checking empty field validation
 			if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
 				$message = show_message("danger", "All fields are required!");
 			} else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$message = show_message("danger", "Invalid email!");
 			} else {
+
+				// file upload
+				$unique_file_name = file_upload($_FILES['photo'], "public/profiles/");
 
 				// save data to database
 				create('users', [
@@ -56,9 +49,7 @@
 					'photo' => $unique_file_name,
 					"location" => $location
 				]);
-
-				// file upload
-				move_uploaded_file($file_tamp_name, "public/profiles/" . $unique_file_name);
+				
 
 				// show a success message
 				$message = show_message("success", "User added successfully");

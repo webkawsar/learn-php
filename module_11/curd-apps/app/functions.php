@@ -32,3 +32,21 @@
         return $users = connect_db() -> query($sql);
     }
 
+    /***
+     * file upload function
+    */
+    function file_upload($file, $location) {
+        // file handling
+        $file_name = $file['name'];
+        $file_tamp_name = $file['tmp_name'];
+        
+        // Generate unique file name
+        $date_time = date('Y-m-d_H-i-s');
+        $unique_file_name = md5(rand().time()).$file_name;
+
+        // file upload
+        move_uploaded_file($file_tamp_name, $location . $unique_file_name);
+
+        return $unique_file_name;
+    }
+
