@@ -1,5 +1,14 @@
 <?php
 	include_once "autoload.php";
+
+	if(isset($_GET['delete_id'])) {
+
+		// delete user
+		delete_by_id("users", $_GET['delete_id']);
+
+		// clear deleted id
+		header("location:index.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +134,7 @@
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $user['id']; ?>">Delete</a>
 							</td>
 						</tr>
 						<?php

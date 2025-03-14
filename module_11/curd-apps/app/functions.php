@@ -33,6 +33,14 @@
     }
 
     /***
+     * delete data
+    */
+    function delete_by_id($table, $id) {
+        $sql = "DELETE FROM $table WHERE id=$id";
+        connect_db() -> query($sql);
+    }
+
+    /***
      * file upload function
     */
     function file_upload($file, $location, array $type = [".jpg", ".jpeg", ".png", ".gif"]) {
