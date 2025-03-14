@@ -36,23 +36,33 @@
 			} else {
 
 				// file upload
-				$unique_file_name = file_upload($_FILES['photo'], "public/profiles/");
+				$file_data = file_upload($_FILES['photo'], "public/profiles/", ['jpg']);
 
-				// save data to database
-				create('users', [
-					'user_name' => $user_name,
-					'full_name' => $full_name,
-					'email' => $email,
-					'phone' => $phone,
-					'age' => $age,
-					'gender' => $gender,
-					'photo' => $unique_file_name,
-					"location" => $location
-				]);
+				// response data
+				$unique_file_name = $file_data['unique_name'];
+				$error_message = $file_data['error_message'];
+
+				if(empty($error_message)) {
+
+					// save data to database
+					create('users', [
+						'user_name' => $user_name,
+						'full_name' => $full_name,
+						'email' => $email,
+						'phone' => $phone,
+						'age' => $age,
+						'gender' => $gender,
+						'photo' => $unique_file_name,
+						"location" => $location
+					]);
+
+					// show a success message
+					$message = show_message("success", "User added successfully");
+				} else {
+					$message = show_message("danger", $error_message);
+				}
+
 				
-
-				// show a success message
-				$message = show_message("success", "User added successfully");
 			}
 		}
 

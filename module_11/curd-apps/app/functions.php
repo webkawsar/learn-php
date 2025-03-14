@@ -35,18 +35,28 @@
     /***
      * file upload function
     */
-    function file_upload($file, $location) {
+    function file_upload($file, $location, array $type = [".jpg", ".jpeg", ".png", ".gif"]) {
         // file handling
         $file_name = $file['name'];
         $file_tamp_name = $file['tmp_name'];
         
         // Generate unique file name
-        $date_time = date('Y-m-d_H-i-s');
+        $file_array = explode(".", $file_name);
+        $file_ext = end($file_array);
         $unique_file_name = md5(rand().time()).$file_name;
 
-        // file upload
-        move_uploaded_file($file_tamp_name, $location . $unique_file_name);
+        $message = "";
+        if(!in_array($file_ext, $type)) {
+            $message = "Invalid file format!";
+        } else {
+            // file upload
+            move_uploaded_file($file_tamp_name, $location . $unique_file_name);
+        }
 
-        return $unique_file_name;
+
+        return [
+            "unique_name" => $unique_file_name,
+            "error_message" => $message
+        ];
     }
 
