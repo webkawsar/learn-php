@@ -140,7 +140,7 @@
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $user['id']; ?>&photo=<?php echo $user['photo']; ?>">Delete</a>
+								<a class="btn btn-sm btn-danger" id="delete_btn" href="?delete_id=<?php echo $user['id']; ?>&photo=<?php echo $user['photo']; ?>">Delete</a>
 							</td>
 						</tr>
 						<?php
@@ -241,6 +241,15 @@
 			$('#load_student_photo').attr('src', file_url);
 
 		});
+
+		$('#delete_btn').click(function() {
+			let confirmation = confirm("Are you sure?");
+			if(confirmation){
+				return true;
+			} else {
+				return false;
+			}
+		})
 	</script>
 </body>
 </html>
