@@ -138,7 +138,7 @@
 							<td><?php echo $user['location']; ?></td>
 							<td><?php echo $user['status']; ?></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-info" href="show.php?show_id=<?php echo $user['id']; ?>">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
 								<a class="btn btn-sm btn-danger" id="delete_btn" href="?delete_id=<?php echo $user['id']; ?>&photo=<?php echo $user['photo']; ?>">Delete</a>
 							</td>

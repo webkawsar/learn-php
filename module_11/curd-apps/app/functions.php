@@ -32,6 +32,16 @@
         return $users = connect_db() -> query($sql);
     }
 
+
+    /**
+     * get single by id
+    */
+    function get_by_id($table, $id) {
+        $sql = "SELECT * FROM $table WHERE id='$id'";
+        return $user = connect_db() -> query($sql);
+    }
+
+
     /***
      * delete data
     */
