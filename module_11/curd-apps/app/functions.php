@@ -9,7 +9,7 @@
     }
 
     /***
-     * create data
+     * create user
     */
     function create($table, $data) {
         
@@ -43,6 +43,26 @@
 
 
     /***
+     * update user
+    */
+    function update($table, $data, $id) {
+        // Prepare the SET part dynamically
+        $setPart = [];
+        foreach ($data as $column => $value) {
+            $setPart[] = "$column = '$value'";
+        }
+        $setClause = implode(', ', $setPart);
+    
+        // Ensure ID is properly handled
+        $sql = "UPDATE $table SET $setClause WHERE id = '$id'";
+    
+        // Execute query
+        return connect_db()->query($sql);
+    }
+    
+
+
+    /***
      * delete data
     */
     function delete_by_id($table, $id) {
@@ -53,7 +73,7 @@
     /***
      * file upload function
     */
-    function file_upload($file, $location, array $type = [".jpg", ".jpeg", ".png", ".gif"]) {
+    function file_upload($file, $location, array $type = ["jpg", "jpeg", "png", "gif"]) {
         // file handling
         $file_name = $file['name'];
         $file_tamp_name = $file['tmp_name'];

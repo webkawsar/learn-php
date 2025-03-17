@@ -1,12 +1,5 @@
 <?php
     require_once "autoload.php";
-
-    if(isset($_GET['edit_id'])) {
-        $id = $_GET['edit_id'];
-        $data = get_by_id("users", $id);
-        $edit_data = $data -> fetch_object();
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -23,27 +16,99 @@
 
 <body>
 
+<?php
 
+/**
+* update user data
+*/
+if(isset($_POST['update'])) {
+    $user_name = $_POST['user_name'];
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $location = $_POST['location'];
+    $id = $_GET['edit_id'];
+
+    // checking empty field validation
+    if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
+        $message = show_message("danger", "All fields are required!");
+    } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message = show_message("danger", "Invalid email!");
+    } else {
+
+        // file upload
+        $file_data = file_upload($_FILES['photo'], "public/profiles/", ['jpg', 'png']);
+
+        // response data
+        $unique_file_name = $file_data['unique_name'];
+        $error_message = $file_data['error_message'];
+
+        if(empty($error_message)) {
+
+            // save data to database
+            update('users', [
+                'user_name' => $user_name,
+                'full_name' => $full_name,
+                'email' => $email,
+                'phone' => $phone,
+                'age' => $age,
+                'gender' => $gender,
+                'photo' => $unique_file_name,
+                "location" => $location
+            ], $id);
+
+            // show a success message
+            $message = show_message("success", "User data updated successfully");
+        } else {
+            $message = show_message("danger", $error_message);
+        }
+
+        
+    }
+}
+
+?>
+
+<?php
+
+    if(isset($_GET['edit_id'])) {
+        $id = $_GET['edit_id'];
+        $data = get_by_id("users", $id);
+        $edit_data = $data -> fetch_object();
+    }
+
+?>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 mx-auto mt-5">
 				<a class="btn btn-sm btn-primary" href="index.php">Back</a>
+                <br>
+                <br>
+
+                <?php
+                    if (isset($message)) {
+                        echo $message;
+                    }
+                ?>
 
 				<div class="card">
 					<div class="card-body">
-						<h2>Student Data Edit</h2>
-						<?php
-                            if (isset($msg)) {
-                                echo $msg;
-                            }
-						?>
+						<h2>User Data Edit</h2>
 						<hr>
+
 						<form action="" method="POST" enctype="multipart/form-data">
 
 							<div class="form-group">
 								<label for="">User Name</label>
-								<input name="name" class="form-control" value="<?php echo $edit_data -> full_name; ?>" type="text">
+								<input name="user_name" class="form-control" value="<?php echo $edit_data -> user_name; ?>" type="text">
+							</div>
+
+                            <div class="form-group">
+								<label for="">Full name</label>
+								<input value="<?php echo $edit_data->full_name; ?>" name="full_name" class="form-control" type="text">
 							</div>
 
 							<div class="form-group">
@@ -53,13 +118,8 @@
 
 
 							<div class="form-group">
-								<label for="">Cell</label>
-								<input value="<?php echo $edit_data->phone; ?>" name="cell" class="form-control" type="text">
-							</div>
-
-							<div class="form-group">
-								<label for="">Username</label>
-								<input value="<?php echo $edit_data->user_name; ?>" name="username" class="form-control" type="text">
+								<label for="">Phone</label>
+								<input value="<?php echo $edit_data->phone; ?>" name="phone" class="form-control" type="text">
 							</div>
 
 							<div class="form-group">
@@ -94,13 +154,13 @@
 								<br>
 
 								<label for="student_photo_edit"> <img width="100" src="assets/media/img/up.png" alt=""></label>
-								<input id="student_photo_edit" name="new_photo" style="display:none;" class="form-control" type="file">
+								<input id="student_photo_edit" name="photo" style="display:none;" class="form-control" type="file">
 								<input type="hidden" value="<?php echo $edit_data->photo; ?>" name="old_photo">
 							</div>
 
 							<div class="form-group">
 								<label for=""></label>
-								<input name="stc" class="btn btn-primary" type="submit" value="Update student">
+								<input name="update" class="btn btn-primary" type="submit" value="Update student">
 							</div>
 
 						</form>
