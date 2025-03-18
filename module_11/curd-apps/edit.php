@@ -30,6 +30,7 @@ if(isset($_POST['update'])) {
     $gender = $_POST['gender'];
     $location = $_POST['location'];
     $id = $_GET['edit_id'];
+	$old_photo = $_POST['old_photo'];
 
     // checking empty field validation
     if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
@@ -38,34 +39,60 @@ if(isset($_POST['update'])) {
         $message = show_message("danger", "Invalid email!");
     } else {
 
-        // file upload
-        $file_data = file_upload($_FILES['photo'], "public/profiles/", ['jpg', 'png']);
+		// at first checking picture upload or not
+		if(!empty($_FILES['new_photo']['name'])) {
 
-        // response data
-        $unique_file_name = $file_data['unique_name'];
-        $error_message = $file_data['error_message'];
+			// file upload
+			$file_data = file_upload($_FILES['new_photo'], "public/profiles/", ['jpg', 'png']);
 
-        if(empty($error_message)) {
+			// response data
+			$unique_file_name = $file_data['unique_name'];
+			$error_message = $file_data['error_message'];
 
-            // save data to database
-            update('users', [
-                'user_name' => $user_name,
-                'full_name' => $full_name,
-                'email' => $email,
-                'phone' => $phone,
-                'age' => $age,
-                'gender' => $gender,
-                'photo' => $unique_file_name,
-                "location" => $location
-            ], $id);
+			if(empty($error_message)) {
 
-            // show a success message
-            $message = show_message("success", "User data updated successfully");
-        } else {
-            $message = show_message("danger", $error_message);
-        }
+				// save data to database
+				update('users', [
+					'user_name' => $user_name,
+					'full_name' => $full_name,
+					'email' => $email,
+					'phone' => $phone,
+					'age' => $age,
+					'gender' => $gender,
+					'photo' => $unique_file_name,
+					"location" => $location
+				], $id);
+	
+				// show a success message
+				$message = show_message("success", "User data updated successfully");
 
-        
+				// remove photo
+				unlink('public/profiles/'.$old_photo);
+
+			} else {
+				$message = show_message("danger", $error_message);
+			}
+
+		} else {
+			// save old phot
+			$unique_file_name = $old_photo;
+
+			// save data to database
+			update('users', [
+				'user_name' => $user_name,
+				'full_name' => $full_name,
+				'email' => $email,
+				'phone' => $phone,
+				'age' => $age,
+				'gender' => $gender,
+				'photo' => $unique_file_name,
+				"location" => $location
+			], $id);
+
+			// show a success message
+			$message = show_message("success", "User data updated successfully");
+		}
+
     }
 }
 
@@ -142,8 +169,8 @@ if(isset($_POST['update'])) {
 
 							<div class="form-group">
 								<label for="">Gender</label> <br>
-								<input name="gender" type="radio" <?php echo ($edit_data->gender == 'male') ? 'checked' : ''; ?> value="Male" id="Male"> <label for="Male">Male</label>
-								<input name="gender" type="radio" <?php echo ($edit_data->gender == 'female') ? 'checked' : '';  ?> value="Female" id="Female"> <label for="Female">Female</label>
+								<input name="gender" type="radio" <?php echo ($edit_data->gender == 'male') ? 'checked' : ''; ?> value="male" id="Male"> <label for="Male">Male</label>
+								<input name="gender" type="radio" <?php echo ($edit_data->gender == 'female') ? 'checked' : '';  ?> value="female" id="Female"> <label for="Female">Female</label>
 							</div>
 
 							
@@ -152,9 +179,11 @@ if(isset($_POST['update'])) {
 								<label for="">Profile Photo</label> <br>
 								<img id="load_student_photo_edit" style="max-width:100% ;" src="public/profiles/<?php echo $edit_data->photo; ?>" alt="User Image">
 								<br>
+								<br>
 
 								<label for="student_photo_edit"> <img width="100" src="assets/media/img/up.png" alt=""></label>
-								<input id="student_photo_edit" name="photo" style="display:none;" class="form-control" type="file">
+								<input id="student_photo_edit" name="new_photo" style="display:none;" class="form-control" type="file">
+
 								<input type="hidden" value="<?php echo $edit_data->photo; ?>" name="old_photo">
 							</div>
 
