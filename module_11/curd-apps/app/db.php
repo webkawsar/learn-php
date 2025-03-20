@@ -36,6 +36,12 @@
     // $sql = "";
     // $connection -> query($sql);
 
+    // $sql = "SELECT * FROM users WHERE updated_at IS NULL";
+    // $sql = "SELECT * FROM users WHERE updated_at IS NOT NULL";
+
+    // column name alias
+    // $sql = "SELECT name as dakNam, email as chiti, phone as mutoPhone, photo as chobi FROM users WHERE updated_at IS NOT NULL";
+
 ?>
 
 
