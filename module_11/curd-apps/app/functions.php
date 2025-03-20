@@ -98,3 +98,15 @@
         ];
     }
 
+
+    /***
+     * data checking in database
+    */
+
+    function data_check($table, $column, $data) {
+        
+        $user_data = connect_db() -> query("SELECT $column FROM $table WHERE $column='$data'");
+        $count = $user_data -> num_rows;
+        
+        return $count > 0 ? true : false;
+    }

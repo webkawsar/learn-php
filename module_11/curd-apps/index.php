@@ -43,18 +43,23 @@
 			$gender = $_POST['gender'];
 			$location = $_POST['location'];
 
-			// checking user email exists or not
-			$user_email = connect_db() -> query("SELECT email FROM users WHERE email='$email'");
-			$email_count = $user_email -> num_rows;
-
-
 			// checking empty field validation
 			if(empty($user_name) || empty($full_name) || empty($email) || empty($phone) || empty($age) || empty($gender) || empty($location)) {
+				
 				$message = show_message("danger", "All fields are required!");
+				
 			} elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
 				$message = show_message("danger", "Invalid email!");
-			} elseif($email_count > 0) {
+
+			} elseif(data_check('users', 'email', $email)) {
+
 				$message = show_message("warning", "Email already exists!");
+
+			} elseif(data_check('users', 'user_name', $user_name)) {
+
+				$message = show_message("warning", "Username already exists!");
+				
 			} else {
 
 				// file upload
