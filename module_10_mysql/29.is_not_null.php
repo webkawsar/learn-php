@@ -13,6 +13,6 @@ $connection = new mysqli($host, $username, $password, $database);
 $sql = "SELECT * FROM users WHERE updated_at IS NOT NULL";
 $data = $connection -> query($sql);
 
-
-
-
+echo "<pre>";
+print_r($data);
+echo "</pre>";

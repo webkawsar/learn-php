@@ -14,5 +14,7 @@ $sql = "SELECT * FROM users WHERE updated_at IS NULL";
 $data = $connection -> query($sql);
 
 
-
+echo "<pre>";
+print_r($data);
+echo "</pre>";
 

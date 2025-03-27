@@ -14,5 +14,6 @@ $sql = "SELECT name as dakNam, email as chiti, phone as mutoPhone, photo as chob
 $data = $connection -> query($sql);
 
 
-
-
+echo "<pre>";
+print_r($data);
+echo "</pre>";
