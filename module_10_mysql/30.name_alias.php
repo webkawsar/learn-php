@@ -10,7 +10,7 @@ $database = 'b129';
 $connection = new mysqli($host, $username, $password, $database);
 
 // sql query
-$sql = "SELECT name as dakNam, email as chiti, phone as mutoPhone, photo as chobi FROM users WHERE updated_at IS NOT NULL";
+$sql = "SELECT name as dakNam, email as chiti, phone as mutoPhone, photo as chobi FROM users";
 $data = $connection -> query($sql);
 
 
