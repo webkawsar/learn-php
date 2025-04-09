@@ -177,27 +177,27 @@
 					<form action="" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="user_name">Username</label>
-							<input name="user_name" class="form-control" type="text">
+							<input name="user_name" class="form-control" type="text" value="<?php old('user_name') ?>">
 						</div>
 
 						<div class="form-group">
 							<label for="full_name">Full name</label>
-							<input name="full_name" class="form-control" type="text">
+							<input name="full_name" class="form-control" type="text" value="<?php old('full_name') ?>">
 						</div>
 
 						<div class="form-group">
 							<label for="">Email</label>
-							<input name="email" class="form-control" type="text">
+							<input name="email" class="form-control" type="text" value="<?php old('email') ?>">
 						</div>
 
 						<div class="form-group">
 							<label for="">Phone</label>
-							<input name="phone" class="form-control" type="text">
+							<input name="phone" class="form-control" type="text" value="<?php old('phone') ?>">
 						</div>
 
 						<div class="form-group">
 							<label for="age">Age</label>
-							<input name="age" class="form-control" type="text">
+							<input name="age" class="form-control" type="text" value="<?php old('age') ?>">
 						</div>
 
 						<div class="form-group">

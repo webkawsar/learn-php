@@ -110,3 +110,11 @@
         
         return $count > 0 ? true : false;
     }
+
+
+    // old function for data recover
+    function old($name) {
+        if(isset($_POST[$name])) {
+            echo $_POST[$name];
+        }
+    }
