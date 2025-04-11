@@ -44,6 +44,39 @@
 
 			return false;
 		})
+
+		$("#profile").click(() => {
+			$.ajax({
+				url: "profile.php",
+				success: (data) => {
+					$("#app").html(data);
+				}
+			})
+
+			return false;
+		})
+
+		$("#all").click(() => {
+			$.ajax({
+				url: "all.php",
+				success: (data) => {
+					$("#app").html(data);
+				}
+			})
+
+			return false;
+		})
+
+		const load = () => {
+			$.ajax({
+				url: "all.php",
+				success: (data) => {
+					$("#app").html(data);
+				}
+			})
+		}
+
+		load();
 	</script>
 </body>
 
