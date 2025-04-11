@@ -21,7 +21,7 @@
 						<input id="username" class="form-control" type="text">
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Sign Up">
+						<input id="submit_btn" class="btn btn-primary" type="submit" value="Sign Up">
 					</div>
 				</form>
 			</div>

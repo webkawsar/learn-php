@@ -76,7 +76,49 @@
 			})
 		}
 
+		// initially load data
 		load();
+
+		// submit form handling
+		$(document).on("submit", "#student_form", () => {
+			const name = $("#name").val();
+			const email = $("#email").val();
+			const cell = $("#cell").val();
+			const username = $("#username").val();
+
+			if(name == '' || email == '' || cell == '' || username == '') {
+				// swal("Warning", "All fields are required", "warning");
+
+				swal({
+					title: 'Oops',
+					text: 'All fields are required',
+					icon: 'warning',
+					button: 'Try Again'
+				})
+			} else {
+				$.ajax({
+					url: "ajax_template/create.php",
+					method: "POST",
+					data: {
+						name,
+						email,
+						cell,
+						username
+					},
+					success: (data) => {
+						swal("Student added successfully!");
+
+						// clear input field
+						$("#name").val("");
+						$("#email").val("");
+						$("#cell").val("");
+						$("#username").val("");
+					}
+				})
+			}
+
+			return false;
+		})
 	</script>
 </body>
 
