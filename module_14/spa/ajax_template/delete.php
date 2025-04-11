@@ -1,6 +1,6 @@
 <?php
 
-$id = $_POST['id'];
+$id = $_POST['deleteId'];
 
 
 $connection = new mysqli('localhost', 'root', '', 'ajax129');

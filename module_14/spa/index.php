@@ -134,6 +134,25 @@
 		}
 
 		allData();
+
+		$(document).on("click", "a.delete_btn", function() {
+
+			const deleteId = $(this).attr("delete_id");
+
+			$.ajax({
+				url: 'ajax_template/delete.php',
+				method: "POST",
+				data: {
+					deleteId
+				},
+				success: () => {
+					swal("Done", "Student deleted successfully", "success");
+					allData();
+				}
+			})
+
+			return false;
+		})
 	</script>
 </body>
 
