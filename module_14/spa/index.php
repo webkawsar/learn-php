@@ -139,17 +139,31 @@
 
 			const deleteId = $(this).attr("delete_id");
 
-			$.ajax({
-				url: 'ajax_template/delete.php',
-				method: "POST",
-				data: {
-					deleteId
-				},
-				success: () => {
-					swal("Done", "Student deleted successfully", "success");
-					allData();
-				}
-			})
+			swal({
+				title: "Are you sure?",
+				text: "You want to delete this student?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				})
+				.then((willDelete) => {
+					if (willDelete) {
+						$.ajax({
+							url: 'ajax_template/delete.php',
+							method: "POST",
+							data: {
+								deleteId
+							},
+							success: () => {
+								swal("Done", "Student deleted successfully", "success");
+								allData();
+							}
+						})
+
+					} else {
+						swal("Done", "Data safe now", "success");
+					}
+				});
 
 			return false;
 		})
