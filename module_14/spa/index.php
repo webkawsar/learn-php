@@ -61,6 +61,9 @@
 				url: "all.php",
 				success: (data) => {
 					$("#app").html(data);
+
+					// load data
+					allData();
 				}
 			})
 
@@ -119,6 +122,18 @@
 
 			return false;
 		})
+
+		// all student data
+		const allData = () => {
+			$.ajax({
+				url: 'ajax_template/all_student.php',
+				success: (data) => {
+					$("#all_student_data").html(data);
+				}
+			})
+		}
+
+		allData();
 	</script>
 </body>
 
