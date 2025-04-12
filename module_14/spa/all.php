@@ -14,10 +14,7 @@
           </tr>
         </thead>
         <tbody id="all_student_data">
-
-
-
-
+          
         </tbody>
       </table>
     </div>

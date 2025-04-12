@@ -15,7 +15,7 @@ while ($stu = $data->fetch_object()) :
     <td><?php echo  $stu->name ?></td>
     <td><?php echo  $stu->email ?></td>
     <td><?php echo  $stu->cell ?></td>
-    <td><?php echo  $stu->username ?></td>
+    <td><img src="photos/<?php echo  $stu->photo ?>" alt=""></td>
     <td>
       <a class="btn btn-sm btn-info" href="#">View</a>
       <a class="btn btn-sm btn-warning" href="#">Edit</a>
