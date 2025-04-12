@@ -83,7 +83,7 @@
 		load();
 
 		// submit form handling
-		$(document).on("submit", "#student_form", () => {
+		$(document).on("submit", "#student_form", function(){
 			const name = $("#name").val();
 			const email = $("#email").val();
 			const cell = $("#cell").val();
@@ -99,25 +99,41 @@
 					button: 'Try Again'
 				})
 			} else {
+
+				// ajax manual
+				// $.ajax({
+				// 	url: "ajax_template/create.php",
+				// 	method: "POST",
+				// 	data: {
+				// 		name,
+				// 		email,
+				// 		cell,
+				// 		username
+				// 	},
+				// 	success: (data) => {
+				// 		swal("Student added successfully!");
+
+				// 		// clear input field
+				// 		$("#name").val("");
+				// 		$("#email").val("");
+				// 		$("#cell").val("");
+				// 		$("#username").val("");
+				// 	}
+				// })
+
+				// ajax new formdata
 				$.ajax({
-					url: "ajax_template/create.php",
+					url: 'ajax_template/create.php',
 					method: "POST",
-					data: {
-						name,
-						email,
-						cell,
-						username
-					},
+					data: new FormData(this), // $(this).serialize()
+					contentType:false,
+					processData: false,
 					success: (data) => {
 						swal("Student added successfully!");
-
-						// clear input field
-						$("#name").val("");
-						$("#email").val("");
-						$("#cell").val("");
-						$("#username").val("");
+						$("#student_form")[0].reset();
 					}
 				})
+
 			}
 
 			return false;
