@@ -1,26 +1,32 @@
+<?php
+
+	$id = $_POST['id'];
+
+	$connection = new mysqli('localhost', 'root', '', 'ajax129');
+	$data = $connection->query("SELECT * FROM students WHERE id='$id'");
+
+	$profile = $data->fetch_object();
+?>
+
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
-			<h2>User Profile: username</h2>
-			<img style="width:300px; height:300px; border-radius: 50%; margin:50px auto;display:block" src="assets/media/img/pp_photo/_MG_1216.jpg" alt="">
-			<h1>Asraful Haque</h1>
-			<h3>0127559999</h3>
+			<h2>User Profile: <?php echo $profile->name ?></h2>
+			<img style="width:300px; height:300px; border-radius: 50%; margin:50px auto;display:block" src="photos/<?php echo $profile->photo ?>" alt="">
+			<h1><?php echo $profile->name ?></h1>
+			<h3><?php echo $profile->cell ?></h3>
 			<table class="table">
 				<tr>
-					<td>Name:</td>
-					<td></td>
+					<td>Username:</td>
+					<td><?php echo $profile->username ?></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td></td>
+					<td><?php echo $profile->email ?></td>
 				</tr>
 				<tr>
 					<td>Cell:</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Cell:</td>
-					<td></td>
+					<td><?php echo $profile->cell ?></td>
 				</tr>
 			</table>
 

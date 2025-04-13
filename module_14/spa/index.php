@@ -33,6 +33,8 @@
 	<script src="assets/js/custom.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
+
+		// add student form show
 		$("#add_student").click(() => {
 			$.ajax({
 				url: "create.php",
@@ -44,17 +46,23 @@
 			return false;
 		})
 
-		$(document).on("click", "#profile", (e) => {
+		// show student profile
+		$(document).on("click", "#profile", function(e) {
 			e.preventDefault();
-			
+
+			const id = $(this).attr('profile_id');
+
 			$.ajax({
 				url: "profile.php",
+				method: "POST",
+				data: { id },
 				success: (data) => {
 					$("#app").html(data);
 				}
 			})
 		});
 
+		// when clicked back button show all students list show
 		$(document).on("click", "#back", (e) => {
 			e.preventDefault();
 			
@@ -69,6 +77,7 @@
 			})
 		});
 
+		// all students list show
 		$("#all").click(() => {
 			$.ajax({
 				url: "all.php",
@@ -92,7 +101,7 @@
 			})
 		}
 
-		// initially load data
+		// initially load all students
 		load();
 
 		// submit form handling
@@ -152,7 +161,7 @@
 			return false;
 		})
 
-		// all student data
+		// all student data load inside in table body
 		const allData = () => {
 			$.ajax({
 				url: 'ajax_template/all_student.php',
@@ -164,6 +173,7 @@
 
 		allData();
 
+		// when clicked delete button, delete student and show a updated student list
 		$(document).on("click", "a.delete_btn", function() {
 
 			const deleteId = $(this).attr("delete_id");
