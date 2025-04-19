@@ -4,14 +4,14 @@
 	<div class="card">
 		<div class="card-body">
 			<h2>Log In Here</h2>
-			<form action="">
+			<form action="" method="POST" id="login_form">
 				<div class="form-group">
-					<label for="">Email / Username / Cell</label>
-					<input class="form-control" type="text">
+					<label for="access">Email / Username / Cell</label>
+					<input id="access" name="access" class="form-control" type="text">
 				</div>
 				<div class="form-group">
-					<label for="">Password</label>
-					<input class="form-control" type="password">
+					<label for="password">Password</label>
+					<input id="password" name="password" class="form-control" type="password">
 				</div>
 
 				<div class="form-group">

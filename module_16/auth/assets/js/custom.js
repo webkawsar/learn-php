@@ -27,12 +27,25 @@
             console.log(data);
           }
         });
-
-
       }
-
     });
 
+
+    /**
+     * User login
+    */
+
+    $("#login_form").submit(function(e) {
+      e.preventDefault();
+
+      // get login data
+      const access = $("#access").val();
+      const password = $("#access").val();
+
+      // validation checking
+      alert(access + password);
+
+    })
 
 
 
