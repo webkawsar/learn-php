@@ -4,6 +4,6 @@
  * Server Info 
  */
 define('HOST', 'localhost');
-define('DB', 'auth129');
 define('USER', 'root');
-define('PASS', '');
+define('PASSWORD', '');
+define('DATABASE_NAME', 'auth129');

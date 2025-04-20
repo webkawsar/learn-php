@@ -43,7 +43,19 @@
       const password = $("#access").val();
 
       // validation checking
-      alert(access + password);
+      if(access == '' || password == ''){
+        alert("All fields are required");
+      } else {
+        $.ajax({
+          url: "",
+          method: "POST",
+          data: {access, password},
+          success: function(data) {
+            alert(data);
+          }
+        })
+      }
+
 
     })
 
