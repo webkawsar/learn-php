@@ -1,12 +1,14 @@
 <?php include_once "templates/header.php";  ?>
 
+<div class="profile"></div>
+
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
 			<h2>Log In Here</h2>
 			<form action="" method="POST" id="login_form">
 				<div class="form-group">
-					<label for="access">Email / Username / Cell</label>
+					<label for="access">Username / Email / Cell</label>
 					<input id="access" name="access" class="form-control" type="text">
 				</div>
 				<div class="form-group">

@@ -10,4 +10,4 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 
-<body>
+<body id="body">

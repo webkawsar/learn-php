@@ -1,4 +1,4 @@
-<?php include_once "templates/heder.php";  ?>
+<?php include_once "templates/header.php";  ?>
 
 <div class="wrap shadow">
 	<div class="card">

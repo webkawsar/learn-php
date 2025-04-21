@@ -4,8 +4,8 @@
    * database connection
    */
 
-  function connect_db() {
-      return $connection = new mysqli(HOST, username: USER, PASSWORD, DATABASE_NAME);
+  function connect_db(): mysqli {
+      return $connection = new mysqli(HOST, username: USER, password: PASSWORD, database: DATABASE_NAME);
   }
     
 

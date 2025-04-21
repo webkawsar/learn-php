@@ -13,16 +13,22 @@ $password = $_POST['pass'];
 //  Make password hash 
 $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
-
 // Upload user photo 
-$file = move($_FILES['photo'], '../../photos/users/');
-
+$file = file_upload($_FILES['photo'], '../../photos/users/');
 $file_name = $file['unique_name'];
 
-if (empty($file['err_msg'])) {
+if (empty($file['error_message'])) {
+
   // Send data to database 
-  create("INSERT INTO users (name, email, cell, username, password, photo ) VALUES ('$name','$email','$cell','$uname','$hash_pass', '$file_name')");
-  echo "User registration successful";
+  create('users', [
+    'username' => $uname,
+    'full_name' => $name,
+    'email' => $email,
+    'cell' => $cell,
+    'password' => $hash_pass,
+    'photo' => $file_name,
+  ]);
+
 } else {
-  echo $file['err_msg'];
+  echo $file['error_message'];
 }
