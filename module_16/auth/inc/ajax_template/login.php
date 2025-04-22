@@ -6,9 +6,7 @@ include_once("../../autoload.php");
 $access = $_POST['access'];
 $password = $_POST['password'];
 
-// make password hashed
-$hashed_password = password_verify($password, PASSWORD_DEFAULT);
-
+// sql query
 $results = connect_db()->query("SELECT * FROM users WHERE username='$access' OR email='$access' OR cell='$access'");
 
 // at first checking user exist or not
@@ -22,11 +20,11 @@ if($results->num_rows === 1) {
         exit;
 
     } else {
-        echo "Invalid credentials!";
+        echo "<div>Invalid credentials!</div>";
     }
 
 } else {
-    echo "Invalid credentials!";
+    echo "<div>Invalid credentials!</div>";
 }
 
 

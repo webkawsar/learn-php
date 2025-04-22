@@ -32,8 +32,7 @@
     /**
      * User login Functionalities
      */
-
-    $("#login_form").submit(function (e) {
+    $("#login_form").submit(function(e) {
       e.preventDefault();
 
       // get login data
@@ -42,16 +41,16 @@
 
       // validation checking
       if (access == "" || password == "") {
+
         // show error message
         alert("All fields are required");
       } else {
-
+        
         $.ajax({
           url: "inc/ajax_template/login.php",
           method: "POST",
           data: { access, password },
           success: function (data) {
-
             $("#body").html(data);
           },
         });

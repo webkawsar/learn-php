@@ -1,7 +1,5 @@
 <?php include_once "templates/header.php";  ?>
 
-<div class="profile"></div>
-
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
@@ -11,6 +9,7 @@
 					<label for="access">Username / Email / Cell</label>
 					<input id="access" name="access" class="form-control" type="text">
 				</div>
+				
 				<div class="form-group">
 					<label for="password">Password</label>
 					<input id="password" name="password" class="form-control" type="password">
