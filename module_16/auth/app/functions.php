@@ -118,3 +118,9 @@
             echo $_POST[$name];
         }
     }
+
+
+    // login user info
+    function logged_in_user($user_id) {
+        return get_by_id("users", $user_id);
+    }

@@ -15,6 +15,10 @@ if($results->num_rows === 1) {
     // checking user password correct or not
     $login_user_data = $results->fetch_object();
     if(password_verify($password, $login_user_data->password)) {
+
+        // user info store in session
+        $_SESSION["user_id"] = $login_user_data->id;
+        $_SESSION["login_status"] = true;
         
         header("location: ../../profile.php");
         exit;

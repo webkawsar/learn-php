@@ -1,5 +1,11 @@
 <?php
 
+
+/**
+ * Session Start
+ */
+session_start();
+
 /**
  * Server Info 
  */

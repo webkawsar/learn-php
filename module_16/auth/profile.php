@@ -1,33 +1,35 @@
-<?php include_once "templates/header.php";  ?>
+<?php 
+
+include_once "templates/header.php";
+include_once "autoload.php";
+
+// get logged in user data
+$id = $_SESSION['user_id'];
+$data = logged_in_user(user_id: $id);
+$user_data = $data -> fetch_object()
+
+?>
 
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
 			<img style="width:200px; height:200px; border-radius:50%;display:block;margin:20px auto;" src="assets/media/img/pp_photo/american-passport-photo.jpg" alt="">
-			<h1>Morjina Khaton</h1>
-			<h3>01712 051936</h3>
+			<h1><?php echo $user_data->username; ?></h1>
+			<h3><?php echo $user_data->cell; ?></h3>
 
 			<hr>
 			<table class="table">
 				<tr>
-					<td>Name</td>
-					<td>Name</td>
+					<td>Full Name</td>
+					<td><?php echo $user_data->full_name; ?></td>
 				</tr>
 				<tr>
-					<td>Name</td>
-					<td>Name</td>
+					<td>Email</td>
+					<td><?php echo $user_data->email; ?></td>
 				</tr>
 				<tr>
-					<td>Name</td>
-					<td>Name</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>Name</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>Name</td>
+					<td>Cell</td>
+					<td><?php echo $user_data->cell; ?></td>
 				</tr>
 			</table>
 		</div>
