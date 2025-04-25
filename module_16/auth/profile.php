@@ -3,6 +3,12 @@
 include_once "templates/header.php";
 include_once "autoload.php";
 
+// user logout 
+if (isset($_GET["logout"])) {
+	session_destroy();
+	header("location:index.php");
+}
+
 // get logged in user data
 $id = $_SESSION['user_id'];
 $data = logged_in_user(user_id: $id);
@@ -34,7 +40,7 @@ $user_data = $data -> fetch_object();
 			</table>
 		</div>
 		<div class="card-footer">
-			<a href="index.php">Logout</a>
+			<a href="?logout=user_logout">Logout</a>
 		</div>
 	</div>
 </div>
