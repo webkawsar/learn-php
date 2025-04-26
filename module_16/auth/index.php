@@ -1,4 +1,14 @@
-<?php include_once "templates/header.php";  ?>
+<?php 
+
+include_once "templates/header.php";
+
+// check user login status
+if (isset($_SESSION["login_status"])) {
+	echo "true";
+	header("location:profile.php");
+}
+
+?>
 
 <div class="wrap shadow">
 	<div class="card">

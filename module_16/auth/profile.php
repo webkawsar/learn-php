@@ -9,6 +9,11 @@ if (isset($_GET["logout"])) {
 	header("location:index.php");
 }
 
+// checking user login status
+if (!isset($_SESSION["login_status"])) {
+	header("location:index.php");
+}
+
 // get logged in user data
 $id = $_SESSION['user_id'];
 $data = logged_in_user(user_id: $id);
