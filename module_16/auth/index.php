@@ -5,7 +5,6 @@ include_once "templates/header.php";
 
 // check user login status
 if (isset($_SESSION["login_status"])) {
-	echo "true";
 	header("location:profile.php");
 }
 
