@@ -32,29 +32,29 @@
     /**
      * User login Functionalities
      */
-    $("#login_form").submit(function(e) {
-      e.preventDefault();
+    // $("#login_form").submit(function(e) {
+    //   e.preventDefault();
 
-      // get login data
-      const access = $("#access").val();
-      const password = $("#password").val();
+    //   // get login data
+    //   const access = $("#access").val();
+    //   const password = $("#password").val();
 
-      // validation checking
-      if (access == "" || password == "") {
+    //   // validation checking
+    //   if (access == "" || password == "") {
 
-        // show error message
-        alert("All fields are required");
-      } else {
+    //     // show error message
+    //     alert("All fields are required");
+    //   } else {
         
-        $.ajax({
-          url: "inc/ajax_template/login.php",
-          method: "POST",
-          data: { access, password },
-          success: function (data) {
-            $("#body").html(data);
-          },
-        });
-      }
-    });
+    //     $.ajax({
+    //       url: "inc/ajax_template/login.php",
+    //       method: "POST",
+    //       data: { access, password },
+    //       success: function (data) {
+    //         $("#body").html(data);
+    //       },
+    //     });
+    //   }
+    // });
   });
 })(jQuery);

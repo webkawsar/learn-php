@@ -24,7 +24,7 @@ $user_data = $data -> fetch_object();
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
-			<img style="width:200px; height:200px; border-radius:50%;display:block;margin:20px auto;" src="photos/<?php echo $user_data->photo; ?>" alt="">
+			<img style="width:200px; height:200px; border-radius:50%;display:block;margin:20px auto;" src="photos/users/<?php echo $user_data->photo; ?>" alt="">
 			<h1><?php echo $user_data->username; ?></h1>
 			<h3><?php echo $user_data->cell; ?></h3>
 

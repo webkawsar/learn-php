@@ -1,5 +1,6 @@
 <?php 
 
+include_once("autoload.php");
 include_once "templates/header.php";
 
 // check user login status
@@ -8,12 +9,66 @@ if (isset($_SESSION["login_status"])) {
 	header("location:profile.php");
 }
 
+
+// user login process
+if(isset($_POST['login_submit'])) {
+
+	// get data
+	$access = $_POST['access'];
+	$password = $_POST['password'];
+
+	// at first checking validation
+	$msg = "";
+	if(empty($access) || empty($password)) {
+
+		$msg = show_message("danger", "All fields are required");
+
+	} else {
+
+		// sql query
+		$results = connect_db()->query("SELECT * FROM users WHERE username='$access' OR email='$access' OR cell='$access'");
+
+		// at first checking user exist or not
+		if($results->num_rows === 1) {
+
+			// checking user password correct or not
+			$login_user_data = $results->fetch_object();
+			if(password_verify($password, $login_user_data->password)) {
+
+				// user info store in session
+				$_SESSION["user_id"] = $login_user_data->id;
+				$_SESSION["login_status"] = true;
+				
+				header("location:profile.php");
+				exit;
+
+			} else {
+				$msg = show_message("danger", "Invalid credentials!");
+			}
+
+		} else {
+			$msg = show_message("danger", "Invalid credentials!");
+		}
+	}
+	
+}
+
 ?>
 
 <div class="wrap shadow">
 	<div class="card">
 		<div class="card-body">
 			<h2>Log In Here</h2>
+
+			<!-- Show Message Here -->
+			<div class="msg">
+				<?php 
+					if(isset($msg)) {
+						echo $msg;
+					} 
+				?>
+			</div>
+
 			<form action="" method="POST" id="login_form">
 				<div class="form-group">
 					<label for="access">Username / Email / Cell</label>
@@ -26,7 +81,7 @@ if (isset($_SESSION["login_status"])) {
 				</div>
 
 				<div class="form-group">
-					<input class="btn btn-primary" type="submit" value="Login">
+					<input class="btn btn-primary" type="submit" name="login_submit" value="Login">
 				</div>
 			</form>
 		</div>
