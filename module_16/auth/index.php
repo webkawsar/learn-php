@@ -97,6 +97,19 @@ if(isset($_POST['login_submit'])) {
 			<a href="register.php">Create an account</a>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-4 my-3">
+			<div class="card">
+				<div class="card-body" style="padding:5px;">
+					<img style="width:100%; height:120px;" src="photos/users/" alt="">
+				</div>
+				<div class="card-footer" style="padding:5px;">
+					<h4>Name</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <?php include_once "templates/footer.php";  ?>

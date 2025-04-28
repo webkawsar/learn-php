@@ -11,6 +11,19 @@ $user_data = $data -> fetch_object();
 // user logout 
 if (isset($_GET["logout"])) {
 
+	// set logout users to cookie
+	$recent_logout_users = json_decode($_COOKIE['recent_logout_users']);
+	if(isset($_COOKIE['recent_logout_users'])) {
+
+		array_push($recent_logout_users, $user_data->id);
+		$encoded_recent_logout_users = json_encode($recent_logout_users);
+		setcookie("recent_logout_users", $encoded_recent_logout_users, time() + (60*60*24*7));
+
+	} else {
+		$encoded_recent_logout_users = json_encode($user_data->id);
+		setcookie("recent_logout_users", $encoded_recent_logout_users, time() + (60*60*24*7));
+	}
+
 	// destroy session
 	session_destroy();
 
