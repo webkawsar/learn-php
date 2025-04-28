@@ -3,9 +3,21 @@
 include_once "templates/header.php";
 include_once "autoload.php";
 
+// get logged in user data
+$id = $_SESSION['user_id'];
+$data = logged_in_user(user_id: $id);
+$user_data = $data -> fetch_object();
+
 // user logout 
 if (isset($_GET["logout"])) {
+
+	// destroy session
 	session_destroy();
+
+	// remove cookie
+	setcookie("login_user_id", $user_data->id, time() - (60*60*24*7));
+
+	// redirect homepage
 	header("location:index.php");
 }
 
@@ -14,10 +26,7 @@ if (!isset($_SESSION["login_status"])) {
 	header("location:index.php");
 }
 
-// get logged in user data
-$id = $_SESSION['user_id'];
-$data = logged_in_user(user_id: $id);
-$user_data = $data -> fetch_object();
+
 
 ?>
 

@@ -3,6 +3,13 @@
 include_once "autoload.php";
 include_once "templates/header.php";
 
+if(isset($_COOKIE["login_user_id"])) {
+	$id = $_COOKIE["login_user_id"];
+	$_SESSION["user_id"] = $id;
+	$_SESSION["login_status"] = true;
+}
+
+
 // check user login status
 if (isset($_SESSION["login_status"])) {
 	header("location:profile.php");
@@ -37,9 +44,11 @@ if(isset($_POST['login_submit'])) {
 				// user info store in session
 				$_SESSION["user_id"] = $login_user_data->id;
 				$_SESSION["login_status"] = true;
+
+				// data set to cookie
+				setcookie("login_user_id", $login_user_data->id, time() + (60*60*24*7));
 				
 				header("location:profile.php");
-				exit;
 
 			} else {
 				$msg = show_message("danger", "Invalid credentials!");
