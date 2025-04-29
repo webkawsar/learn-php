@@ -99,16 +99,27 @@ if(isset($_POST['login_submit'])) {
 	</div>
 
 	<div class="row">
+		<?php
+
+		if(isset($_COOKIE['recent_logout_users'])) :
+
+			$users = json_decode($_COOKIE['recent_logout_users'], true);
+			foreach($users as $user):
+		?>
 		<div class="col-md-4 my-3">
 			<div class="card">
 				<div class="card-body" style="padding:5px;">
 					<img style="width:100%; height:120px;" src="photos/users/" alt="">
 				</div>
 				<div class="card-footer" style="padding:5px;">
-					<h4>Name</h4>
+					<h4><?php echo $user; ?></h4>
 				</div>
 			</div>
 		</div>
+		<?php
+			endforeach;
+			endif;
+		?>
 	</div>
 </div>
 
