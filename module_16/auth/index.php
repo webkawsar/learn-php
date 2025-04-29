@@ -103,21 +103,23 @@ if(isset($_POST['login_submit'])) {
 
 		if(isset($_COOKIE['recent_logout_users'])) :
 
-			$users = json_decode($_COOKIE['recent_logout_users'], true);
-			foreach($users as $user):
+			$users = json_decode($_COOKIE['recent_logout_users']);
+			$users_id = implode(',', $users);
+			$data = connect_db()->query("SELECT * FROM users WHERE id IN($users_id)");
+			while($user = $data-> fetch_object()):
 		?>
 		<div class="col-md-4 my-3">
 			<div class="card">
 				<div class="card-body" style="padding:5px;">
-					<img style="width:100%; height:120px;" src="photos/users/" alt="">
+					<img style="width:100%; height:120px;" src="photos/users/<?php echo $user->photo; ?>" alt="">
 				</div>
 				<div class="card-footer" style="padding:5px;">
-					<h4><?php echo $user; ?></h4>
+					<h4 style="text-align: center;"><?php echo $user->username; ?></h4>
 				</div>
 			</div>
 		</div>
 		<?php
-			endforeach;
+			endwhile;
 			endif;
 		?>
 	</div>
