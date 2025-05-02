@@ -42,8 +42,6 @@ if (!isset($_SESSION["login_status"])) {
 	header("location:index.php");
 }
 
-
-
 ?>
 
 <div class="wrap shadow">
