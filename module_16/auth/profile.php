@@ -25,7 +25,7 @@ if (isset($_GET["logout"])) {
 	}
 
 	// set cookie
-	setcookie("recent_logout_users", $encoded_logout_users, time() + (60*60*24*7));
+	setcookie("recent_logout_users", $encoded_logout_users, time() + (60*60*24*7), "/");
 
 	// destroy session
 	session_destroy();

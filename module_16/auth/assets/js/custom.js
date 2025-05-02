@@ -29,6 +29,24 @@
       }
     });
 
+    $(".cancel_user").click(function (e) {
+      // get deleted id
+      const deleteId = $(this).attr("delete_id");
+
+      // send ajax request for delete user
+      $.ajax({
+        url: "inc/ajax_template/cancel.php",
+        method: "POST",
+        data: { id: deleteId },
+        success: function(data){
+          alert(data);
+        }
+      })
+
+    })
+
+ 
+
     /**
      * User login Functionalities
      */

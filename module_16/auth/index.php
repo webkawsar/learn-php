@@ -112,7 +112,9 @@ if(isset($_POST['login_submit'])) {
 			<div class="card" style="position: relative">
 				<div class="card-body" style="padding:5px;">
 					<img style="width:100%; height:120px;" src="photos/users/<?php echo $user->photo; ?>" alt="">
-					<div style="text-align: center; position: absolute; top: 0; right: 10px; color: red; font-size: 25px; padding: 2px 5px; cursor: pointer;" class="cancel">X</div>
+					<div delete_id="<?php echo $user->id; ?>" style="text-align: center; position: absolute; top: 0; right: 10px; color: red; font-size: 25px; padding: 0 5px; cursor: pointer;" class="cancel_user">
+						X
+					</div>
 				</div>
 				<div class="card-footer" style="padding:5px;">
 					<h4 style="text-align: center;"><?php echo $user->username; ?></h4>
