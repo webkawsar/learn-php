@@ -105,8 +105,10 @@ if(isset($_POST['login_submit'])) {
 
 			$users = json_decode($_COOKIE['recent_logout_users']);
 			$users_id = implode(',', $users);
-			$data = connect_db()->query("SELECT * FROM users WHERE id IN($users_id)");
-			while($user = $data-> fetch_object()):
+			if (!empty($users_id)):
+				$data = connect_db()->query("SELECT * FROM users WHERE id IN($users_id)");
+				if($data):
+					while($user = $data-> fetch_object()):
 		?>
 		<div class="col-md-4 my-3">
 			<div class="card" style="position: relative">
@@ -122,8 +124,10 @@ if(isset($_POST['login_submit'])) {
 			</div>
 		</div>
 		<?php
-			endwhile;
+					endwhile;
+				endif;
 			endif;
+		endif;
 		?>
 	</div>
 </div>
