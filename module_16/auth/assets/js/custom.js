@@ -53,7 +53,23 @@
             alert('Something went wrong.');
         }
       })
+    })
 
+
+    /***
+     * User login by cookies
+     */
+    $(".full_card").click(function(e) {
+      const loginId = $(this).attr("login_id");
+
+      $.ajax({
+        url: "inc/ajax_template/login.php",
+        method: "POST",
+        data: { id: loginId },
+        success: (data) => {
+
+        }
+      })
     })
 
  
