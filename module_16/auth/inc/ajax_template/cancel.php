@@ -24,6 +24,11 @@ if (isset($_COOKIE['recent_logout_users'])) {
         true    // HttpOnly
     );
 
+    echo 'success';
+    exit;
+
 }
+
+echo 'error';
 
 ?>

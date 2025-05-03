@@ -32,14 +32,25 @@
     $(".cancel_user").click(function (e) {
       // get deleted id
       const deleteId = $(this).attr("delete_id");
+      const card = $('#user-card-' + deleteId);
 
       // send ajax request for delete user
       $.ajax({
         url: "inc/ajax_template/cancel.php",
         method: "POST",
         data: { id: deleteId },
-        success: function(data){
-          alert("User deleted from cookies");
+        success: function (response) {
+          if (response.trim() === 'success') {
+              alert("User deleted from cookies");
+              card.fadeOut(300, function () {
+                  $(this).remove();
+              });
+          } else {
+              alert('Failed to remove user.');
+          }
+        },
+        error: function () {
+            alert('Something went wrong.');
         }
       })
 
