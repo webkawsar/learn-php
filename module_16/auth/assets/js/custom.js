@@ -39,7 +39,7 @@
         method: "POST",
         data: { id: deleteId },
         success: function(data){
-          alert(data);
+          alert("User deleted from cookies");
         }
       })
 
