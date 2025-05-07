@@ -24,11 +24,27 @@
     }
  }
 
+ class C extends B {
+
+    public function C_method() {
+        echo "It's from C";
+    }
+ }
+
  // inheritance
-$b = new B;
+// $b = new B;
 // $b->learn();
 // $b->work();
-$b->bypass();
+// $b->bypass();
+
+$c = new C;
+// $c-> C_method();
+// $c-> learn();
+// $c-> bypass();
+// $c-> food();
+$c-> work();
+// $c-> nai();
+
 
 
 ?>
