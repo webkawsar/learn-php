@@ -47,7 +47,7 @@ $c->learn();
 
 
 // rules
-// abstract class object/instance ber kore use kora jabe na
+// abstract class er object/instance ber kore use kora jabe na
 // abstract class extends kore use korte hobe
 // final class extends kore use kora jabe na
 // final class er object/instance ber kore use korte hobe

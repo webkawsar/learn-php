@@ -1,3 +1,11 @@
+<?php
+
+	include_once "autoload.php";
+
+	$user = new User;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +17,20 @@
 	<link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+
+<?php
+
+	// form submit handling
+	if(isset($_POST["add"])) {
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$username = $_POST['username'];
+
+		$user -> create_user($name, $email, $phone, $username);
+	}
+
+?>
 
 	<div class="wrap-table ">
 	<a class="btn btn-sm btn-primary" data-toggle="modal" href="#add_user_modal">Add new student</a>
@@ -67,12 +89,12 @@
 							<input name="email" class="form-control" type="text">
 						</div>
 						<div class="form-group">
-							<label for="">Cell</label>
-							<input name="cell" class="form-control" type="text">
+							<label for="">Phone</label>
+							<input name="phone" class="form-control" type="text">
 						</div>
 						<div class="form-group">
 							<label for="">Username</label>
-							<input name="uname" class="form-control" type="text">
+							<input name="username" class="form-control" type="text">
 						</div>
 						<div class="form-group">
 							<input name="add" type="submit" value="Add" class="btn btn-primary">
