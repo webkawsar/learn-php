@@ -4,6 +4,14 @@
 
 	$user = new User;
 
+
+	// delete user functionalities
+	if(isset($_GET["delete_id"])) {
+		$id = $_GET["delete_id"];
+		$user -> delete_user($id);
+		header("location:index.php");
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +73,7 @@
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="?delete_id=">Delete</a>
+								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $user->id; ?>">Delete</a>
 							</td>
 						</tr>					
 						<?php 
