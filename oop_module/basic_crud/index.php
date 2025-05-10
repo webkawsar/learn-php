@@ -51,21 +51,26 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php
 
-		 				
+							$users = $user -> get_users("users");
+							while($user = $users->fetch_object()):
+						?>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?php echo $user->id; ?></td>
+							<td><?php echo $user->name; ?></td>
+							<td><?php echo $user->email; ?></td>
+							<td><?php echo $user->phone; ?></td>
 							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
 								<a class="btn btn-sm btn-danger" href="?delete_id=">Delete</a>
 							</td>
-						</tr>						
-
+						</tr>					
+						<?php 
+							endwhile;
+						?>
 					</tbody>
 				</table>
 			</div>
