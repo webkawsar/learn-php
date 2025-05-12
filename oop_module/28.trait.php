@@ -35,6 +35,7 @@ class B {
 class C extends B {
     
     use Dev;
+    use Help;
 
 
     public function three() {
@@ -47,7 +48,9 @@ $c = new C;
 // $c->two();
 // $c->one();
 // $c->food();
-$c->tour();
+// $c->tour();
+$c->guide();
+
 
 
 
