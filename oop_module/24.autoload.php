@@ -11,4 +11,8 @@ $student = new Student;
 $user - new User;
 
 
+// namespace, autoload
+// 23, 24, 25, 26 valovabe practice korte hobe
+
+
 ?>
