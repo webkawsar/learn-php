@@ -5,17 +5,17 @@
         private $age = 29;
         private $profession = "JS Developer";
 
-        public function setName($name) {
+        public function setName(string $name) {
             $this->name = $name;
             return $this;
         }
 
-        public function setAge($age) {
+        public function setAge(int $age) {
             $this->age = $age;
             return $this;
         }
 
-        public function setProfession($profession) {
+        public function setProfession(string $profession) {
             $this->profession = $profession;
             return $this;
         }
@@ -32,7 +32,7 @@
     $student->setName("Samim Mohammad")->setAge(30)->setProfession("Pilot")->info();
 
 
-    
+
 
 
 
