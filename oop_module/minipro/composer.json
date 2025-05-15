@@ -1,0 +1,19 @@
+{
+    "name": "kawsarahmed/minipro",
+    "description": "This is professional oop project",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\" : "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kawsar",
+            "email": "web.kawsarahmed@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
