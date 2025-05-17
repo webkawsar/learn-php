@@ -3,7 +3,7 @@
         <img src="assets/images/hero-bg.jpg" alt="">
     </div>
 
-    <?php include_once "HeaderMenu.php"; ?>
+    <?php include_once "Navbar.php"; ?>
 
     <!-- slider section -->
     <section class="slider_section ">

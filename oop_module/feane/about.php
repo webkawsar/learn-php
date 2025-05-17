@@ -6,13 +6,12 @@
       <img src="assets/images/hero-bg.jpg" alt="">
     </div>
 
-    <?php include_once "templates/HeaderMenu.php"; ?>
-    
+    <?php include_once "templates/Navbar.php"; ?>
+
   </div>
 </div>
 
 <!-- about section -->
-
 <section class="about_section layout_padding">
   <div class="container  ">
 
@@ -43,7 +42,6 @@
     </div>
   </div>
 </section>
-
 <!-- end about section -->
 
 <?php include_once "templates/Footer.php"; ?>

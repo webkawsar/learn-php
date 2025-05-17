@@ -6,7 +6,7 @@
       <img src="assets/images/hero-bg.jpg" alt="">
     </div>
 
-    <?php include_once "templates/HeaderMenu.php"; ?>
+    <?php include_once "templates/Navbar.php"; ?>
 
   </div>
 </div>
