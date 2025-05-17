@@ -1,3 +1,13 @@
+<?php
+
+    include_once "vendor/autoload.php";
+
+    use App\Controllers\Menu;
+
+    $menu = new Menu;
+
+?>
+
 <!-- header section strats -->
 <header class="header_section">
     <div class="container">
@@ -15,18 +25,27 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
+                    </li> -->
+
+                    <?php
+                        $data = $menu->getAll();
+                        while($menu_data = $data->fetch_object()):
+                        
+                    ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="menu.php">Menu</a>
+                        <a class="nav-link" href="<?php echo $menu_data->link; ?>"><?php echo $menu_data->name; ?></a>
                     </li>
-                    <li class="nav-item">
+
+                    <?php endwhile; ?>
+
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="book.php">Book Table</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="user_option">
                     <a href="" class="user_link">

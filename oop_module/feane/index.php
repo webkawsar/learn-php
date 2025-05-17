@@ -1,5 +1,6 @@
   <?php 
   
+  
   include_once "templates/Header.php";
   include_once "templates/Hero.php";
   include_once "templates/Offer.php";
