@@ -33,6 +33,13 @@ class Student extends Database {
         ]);
     }
 
+    /**
+     * Get All Students
+     */
+    public function allStudents($table) {
+        return parent::find($table);
+    }
+
 
 }
 
