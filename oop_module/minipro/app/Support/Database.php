@@ -13,7 +13,7 @@ abstract class Database
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $db = 'oop129';
+    private $db = 'minipro';
     private $connection;
 
 
@@ -29,7 +29,7 @@ abstract class Database
     /**
      * Create data
      */
-    protected function create($table, $data)
+    protected function create(string $table, array $data)
     {
 
         // get keys only from array

@@ -1,3 +1,9 @@
+<?php
+
+include_once "vendor/autoload.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +16,6 @@
 </head>
 <body>
 	
-	
-
 	<div class="wrap-table">
 		<a class="btn btn-primary" href="add-student.php">Add New Student</a>
 		<br>

@@ -3,7 +3,7 @@
         'name' => 'kawsarahmed/minipro',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'a3b31aa60f7ad4640e37f3050720c5c91c5b9dc0',
+        'reference' => '1b807e59dd44222908ee6bfac6bff06e682bb47f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'kawsarahmed/minipro' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'a3b31aa60f7ad4640e37f3050720c5c91c5b9dc0',
+            'reference' => '1b807e59dd44222908ee6bfac6bff06e682bb47f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
