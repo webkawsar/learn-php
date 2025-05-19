@@ -59,7 +59,8 @@ abstract class Database
     protected function findById($table, $id)
     {
         $sql = "SELECT * FROM $table WHERE id='$id'";
-        return $user = connect_db()->query($sql);
+        $data = $this->connection()->query($sql);
+        return $data->fetch_object();
     }
 
 

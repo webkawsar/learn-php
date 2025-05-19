@@ -46,6 +46,10 @@ class Student extends Database {
         parent::deleteById("students", $id);
     }
 
+    public function showStudent($id) {
+        return parent::findById("students", $id);
+    }
+
 
 }
 

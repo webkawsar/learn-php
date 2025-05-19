@@ -56,26 +56,18 @@ if(isset($_GET['delete_id'])) {
 							<td><?php echo $student->phone; ?></td>
 							<td><img src="uploads/<?php echo $student->photo; ?>" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-info" href="show.php?student_id=<?php echo $student->id; ?>">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
 								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $student->id; ?>">Delete</a>
 							</td>
 						</tr>
 						<?php endwhile; ?>
-
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 	
-
-
-
-
-
-
-
 	<!-- JS FILES  -->
 	<script src="assets/js/jquery-3.4.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
