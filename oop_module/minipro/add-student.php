@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					<div class="form-group">
 						<label for="">Photo</label>
-						<input name="photo" class="form-control" type="file" style="padding: 3px 3px">
+						<input name="photo" class="form-control" type="file" style="padding: 4px 3px">
 					</div>
 					<div class="form-group">
 						<input name="submit" class="btn btn-primary" type="submit" value="Sign Up">

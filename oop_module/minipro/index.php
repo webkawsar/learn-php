@@ -5,6 +5,12 @@ include_once "vendor/autoload.php";
 use App\Controllers\Student;
 $student = new Student;
 
+if(isset($_GET['delete_id'])) {
+	$id = $_GET['delete_id'];
+	$student->deleteStudent($id);
+	header("location:index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +24,6 @@ $student = new Student;
 	<link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-	
 	<div class="wrap-table">
 		<a class="btn btn-primary" href="add-student.php">Add New Student</a>
 		<br>
@@ -41,7 +46,6 @@ $student = new Student;
 					<tbody>
 						<?php
 							$data = $student -> allStudents("students");
-							
 							while($student = $data->fetch_object()):
 						?>
 						
@@ -54,7 +58,7 @@ $student = new Student;
 							<td>
 								<a class="btn btn-sm btn-info" href="#">View</a>
 								<a class="btn btn-sm btn-warning" href="#">Edit</a>
-								<a class="btn btn-sm btn-danger" href="#">Delete</a>
+								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $student->id; ?>">Delete</a>
 							</td>
 						</tr>
 						<?php endwhile; ?>

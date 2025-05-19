@@ -41,5 +41,11 @@ class Student extends Database {
     }
 
 
+
+    public function deleteStudent($id) {
+        parent::deleteById("students", $id);
+    }
+
+
 }
 
