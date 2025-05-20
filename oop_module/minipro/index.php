@@ -57,7 +57,7 @@ if(isset($_GET['delete_id'])) {
 							<td><img src="uploads/<?php echo $student->photo; ?>" alt=""></td>
 							<td>
 								<a class="btn btn-sm btn-info" href="show.php?student_id=<?php echo $student->id; ?>">View</a>
-								<a class="btn btn-sm btn-warning" href="#">Edit</a>
+								<a class="btn btn-sm btn-warning" href="edit.php?edit_id=<?php echo $student->id; ?>">Edit</a>
 								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $student->id; ?>">Delete</a>
 							</td>
 						</tr>

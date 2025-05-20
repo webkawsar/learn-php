@@ -47,7 +47,7 @@ class Student extends Database {
     }
 
     public function showStudent($id) {
-        return parent::findById("students", $id);
+        return $this->findById("students", $id);
     }
 
 
