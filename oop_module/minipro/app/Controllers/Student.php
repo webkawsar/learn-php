@@ -50,6 +50,23 @@ class Student extends Database {
         return $this->findById("students", $id);
     }
 
+    public function updateStudentData($id, $name, $email, $phone, $new_photo, $old_photo) {
+        if(empty($new_photo['name'])) {
+            $photo_name = $old_photo;
+        } else {
+            $file = $this -> upload_file($new_photo, "uploads/");
+            $photo_name = $file['file_name'];
+            unlink("uploads/".$old_photo);
+        }
+
+        return $this -> updateById("students", $id, [
+            "name" => $name,
+            "email" => $email,
+            "phone" => $phone,
+            "photo" => $photo_name
+        ]);
+    }
+
 
 }
 

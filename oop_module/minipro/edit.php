@@ -7,28 +7,30 @@ use App\Controllers\Student;
 
 $student = new Student;
 
+
+if (isset($_POST['submit'])) {
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$phone = $_POST['phone'];
+	$new_photo = $_FILES['new_photo'];
+	$old_photo = $_POST['old_photo'];
+	$id = $_GET['edit_id'];
+
+	// checking validation
+	$message = "";
+	if (empty($name) || empty($email) || empty($phone) || empty($new_photo)) {
+		$message = "<div class='alert alert-danger' role='alert'>All fields are required</div>";
+	} else {
+		$student -> updateStudentData($id, $name, $email, $phone, $new_photo, $old_photo);
+	}
+
+}
+
 if(isset($_GET['edit_id'])) {
     $id = $_GET['edit_id'];
     $data = $student->showStudent($id);
-}
-
-
-if (isset($_POST['submit'])) {
-	// $name = $_POST['name'];
-	// $email = $_POST['email'];
-	// $password = $_POST['password'];
-	// $phone = $_POST['phone'];
-	// $photo = $_FILES['photo'];
-
-	// // checking validation
-	// $message = "";
-	// if (empty($name) || empty($email) || empty($password) || empty($phone) || empty($photo)) {
-	// 	$message = "<div class='alert alert-danger' role='alert'>All fields are required</div>";
-	// } else {
-	// 	$student -> createNewStudent($name, $email, $password, $phone, $photo);
-	// }
-
-
+} else {
+	header("location:index.php");
 }
 
 
@@ -56,7 +58,7 @@ if (isset($_POST['submit'])) {
 
 		<div class="card shadow">
 			<div class="card-body">
-				<h2>Edit - <?php echo $data->name; ?></h2>
+				<h2>Edit Info - <?php echo $data->name; ?></h2>
 				<?php
 				if (isset($message)) {
 					echo $message;
@@ -81,10 +83,11 @@ if (isset($_POST['submit'])) {
                         <br>
                         <br>
 						<label for="">Photo</label>
-						<input name="photo" class="form-control" type="file" style="padding: 4px 3px">
+						<input name="new_photo" class="form-control" type="file" style="padding: 4px 3px">
+						<input type="text" name="old_photo" hidden value="<?php echo $data->photo; ?>">
 					</div>
 					<div class="form-group">
-						<input name="submit" class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="submit" class="btn btn-primary" type="submit" value="Update">
 					</div>
 				</form>
 			</div>

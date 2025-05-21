@@ -67,7 +67,7 @@ abstract class Database
     /***
      * update user
      */
-    protected function updateById($table, $data, $id)
+    protected function updateById(string $table, int $id, array $data)
     {
         // Prepare the SET part dynamically
         $setPart = [];
@@ -80,7 +80,7 @@ abstract class Database
         $sql = "UPDATE $table SET $setClause WHERE id = '$id'";
 
         // Execute query
-        return connect_db()->query($sql);
+        return $this->connection()->query($sql);
     }
 
 
