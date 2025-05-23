@@ -8,14 +8,14 @@ class Foo {
         echo "Welcome to Bangladesh";
     }
 
-    function getColor() {
+    public function getColor() {
         echo "Color is {$this->color}";
     }
 }
 
 $foo = new Foo();
 $foo->color = "Red";
-echo $foo->color;
+// echo $foo->color;
 
 
 $foo->getColor();
